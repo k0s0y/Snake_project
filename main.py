@@ -32,8 +32,7 @@ def message_to_screen(msg, color):
     screen.blit(screen_text, [screen_width / 6, screen_height / 3])
 
 
-# Main game loop
-def gameLoop():
+def game_loop():
     game_exit = False
     game_over = False
 
@@ -66,7 +65,7 @@ def gameLoop():
                         game_exit = True
                         game_over = False
                     elif event.key == pygame.K_c:
-                        gameLoop()
+                        game_loop()
 
         # Handle events while game is running
         for event in pygame.event.get():
@@ -124,4 +123,4 @@ def gameLoop():
 
 
 if __name__ == '__main__':
-    gameLoop()
+    game_loop()
