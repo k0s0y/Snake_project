@@ -50,6 +50,9 @@ def game_loop():
     snake_list = []
     snake_length = 1
 
+    # Initialize score
+    score = 0
+
     while not game_exit:
 
         # Check for game over condition
@@ -106,6 +109,9 @@ def game_loop():
         screen.fill(black)
         pygame.draw.rect(screen, red, [food_x, food_y, block_size, block_size])
         draw_snake(block_size, snake_list)
+        # Display score
+        score_text = font.render("Score: " + str(score), True, red)
+        screen.blit(score_text, [10, 10])
         pygame.display.update()
 
         # Check for collision with food
@@ -113,11 +119,12 @@ def game_loop():
             food_x = round(random.randrange(0, screen_width - block_size) / block_size) * block_size
             food_y = round(random.randrange(0, screen_height - block_size) / block_size) * block_size
             snake_length += 1
+            score += 10
 
         # Update game clock
         clock.tick(10)
 
-    # Quit Pygame and exit program
+# Quit Pygame and exit program
     pygame.quit()
     quit()
 
